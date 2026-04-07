@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title><%= title %> · Renato Dev</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="bg-white text-slate-900">
+    <header class="border-b border-slate-100">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <!-- Logo / nombre -->
+        <a href="/" class="inline-flex items-center gap-2">
+          <div class="border border-blue-500 text-blue-500 font-semibold text-xs px-2 py-1 rounded-md tracking-wide">
+            RL
+          </div>
+          <span class="text-sm font-medium text-slate-700">
+            Renato Ideenlabor
+          </span>
+        </a>
+
+        <!-- Nav derecha con login -->
+        <nav class="flex items-center gap-6 text-sm">
+            <a href="/projects" class="text-slate-500 hover:text-blue-600 transition">
+              Proyectos
+            </a>
+            <a href="/blog" class="text-slate-500 hover:text-blue-600 transition">
+              Blog
+            </a>
+            <a href="/contact" class="text-slate-500 hover:text-blue-600 transition">
+              Contacto
+            </a>
+          
+            <% if (currentUser) { %>
+              <!-- Si hay sesión, mostrar link al panel -->
+              <a
+                href="/admin"
+                class="inline-flex items-center px-3 py-1.5 rounded-full border border-emerald-200 text-emerald-700 text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 transition"
+              >
+                Panel admin
+              </a>
+            <% } else { %>
+              <!-- Si no hay sesión, mostrar Iniciar sesión -->
+              <a
+                href="/admin/login"
+                class="inline-flex items-center px-3 py-1.5 rounded-full border border-blue-200 text-blue-600 text-xs font-semibold hover:bg-blue-50 hover:border-blue-300 transition"
+              >
+                Iniciar sesión
+              </a>
+            <% } %>
+          </nav>
+      </div>
+    </header>

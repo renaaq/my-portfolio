@@ -1,0 +1,62 @@
+<%- include("../partials/header") %>
+
+<main class="min-h-[70vh] flex items-center justify-center px-4 py-10">
+  <div class="w-full max-w-sm">
+    <h1 class="text-sm tracking-[0.25em] uppercase text-slate-400 mb-2">
+      Admin
+    </h1>
+    <h2 class="text-2xl font-semibold text-slate-900 mb-6">
+      Iniciar sesión
+    </h2>
+
+    <% if (typeof errorMessage !== "undefined" && errorMessage) { %>
+      <p class="mb-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+        <%= errorMessage %>
+      </p>
+    <% } %>
+
+    <form method="post" action="/admin/login" class="space-y-4">
+      <div>
+        <label for="email" class="block text-xs font-medium text-slate-600 mb-1">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          value="<%= typeof email !== 'undefined' ? email : '' %>"
+          class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+        />
+      </div>
+
+      <div>
+        <label for="password" class="block text-xs font-medium text-slate-600 mb-1">
+          Contraseña
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+      >
+        Entrar al panel
+      </button>
+    </form>
+
+    <p class="mt-4 text-[11px] text-slate-400">
+      Solo uso interno. Si olvidaste tus credenciales, actualizá el admin desde el script del proyecto.
+    </p>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>

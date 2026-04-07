@@ -1,0 +1,112 @@
+<%- include("../partials/header") %>
+
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-semibold text-slate-900">
+      <%= formTitle || "Post" %>
+    </h1>
+    <a href="/admin/posts" class="text-xs text-blue-600 hover:text-blue-800">
+      ← Volver a posts
+    </a>
+  </div>
+
+
+  <% if (errorMessage) { %>
+    <p class="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
+      <%= errorMessage %>
+    </p>
+  <% } %>
+
+
+  <form method="post" action="<%= action %>" class="space-y-4">
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="title">Título</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        required
+        value="<%= post ? post.title : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+    </div>
+
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="slug">Slug</label>
+      <input
+        id="slug"
+        name="slug"
+        type="text"
+        required
+        value="<%= post ? post.slug : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+      <p class="text-[11px] text-slate-400 mt-1">Identificador en URL, por ejemplo: <code>mi-post</code>.</p>
+    </div>
+
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="excerpt">Resumen</label>
+      <textarea
+        id="excerpt"
+        name="excerpt"
+        rows="2"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      ><%= post ? post.excerpt : '' %></textarea>
+      <p class="text-[11px] text-slate-400 mt-1">Texto corto que aparece en la lista de posts.</p>
+    </div>
+
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="content">Contenido</label>
+      <textarea
+        id="content"
+        name="content"
+        rows="10"
+        required
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      ><%= post ? post.content : '' %></textarea>
+    </div>
+
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="tags">Tags</label>
+      <input
+        id="tags"
+        name="tags"
+        type="text"
+        value="<%= post ? post.tags : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+      <p class="text-[11px] text-slate-400 mt-1">Separados por coma, por ejemplo: <code>node, express, postgresql</code>.</p>
+    </div>
+
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="status">Estado</label>
+      <select
+        id="status"
+        name="status"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      >
+        <option value="draft" <%= post && post.status === 'draft' ? 'selected' : '' %>>Borrador</option>
+        <option value="published" <%= post && post.status === 'published' ? 'selected' : '' %>>Publicado</option>
+      </select>
+    </div>
+
+
+    <button
+      type="submit"
+      class="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+    >
+      Guardar post
+    </button>
+  </form>
+</main>
+
+
+<%- include("../partials/footer") %>
+
+asi tengo project form esta bien>

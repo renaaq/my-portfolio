@@ -1,0 +1,33 @@
+{
+  "name": "proyecto-copilot-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio personal full-stack con Express, PostgreSQL y EJS",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "build:css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/style.css --watch",
+    "start": "node src/server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "express",
+    "ejs",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19"
+  }
+}

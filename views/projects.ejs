@@ -1,0 +1,46 @@
+<%- include("partials/header") %>
+
+<main class="max-w-6xl mx-auto px-4 py-12">
+  <header class="flex items-baseline justify-between gap-4 mb-6">
+    <div>
+      <p class="text-xs uppercase tracking-[0.25em] text-slate-400 mb-2">Portfolio</p>
+      <h1 class="text-3xl font-semibold text-slate-900">Proyectos</h1>
+    </div>
+    <span class="text-xs text-slate-400">
+      <%= projects ? projects.length : 0 %> proyectos
+    </span>
+  </header>
+
+  <% if (!projects || projects.length === 0) { %>
+    <p class="text-sm text-slate-500">No hay proyectos para mostrar.</p>
+  <% } else { %>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <% projects.forEach((project) => { %>
+        <article class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+          <h2 class="text-base font-semibold text-slate-900 mb-1"><%= project.title %></h2>
+          <p class="text-xs text-slate-600 mb-3">
+            <%= (project.description || "").slice(0, 160) %>
+            <%= (project.description || "").length > 160 ? "..." : "" %>
+          </p>
+          <p class="text-[11px] text-slate-400 mb-3">
+            Stack: <%= project.tech_stack || "No especificado" %>
+          </p>
+          <div class="flex flex-wrap gap-3 text-[11px]">
+            <% if (project.repo_url) { %>
+              <a href="<%= project.repo_url %>" target="_blank" class="text-blue-600 hover:text-blue-800">
+                Repositorio
+              </a>
+            <% } %>
+            <% if (project.live_url) { %>
+              <a href="<%= project.live_url %>" target="_blank" class="text-blue-600 hover:text-blue-800">
+                Demo
+              </a>
+            <% } %>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  <% } %>
+</main>
+
+<%- include("partials/footer") %>

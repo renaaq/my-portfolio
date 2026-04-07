@@ -1,0 +1,105 @@
+<%- include("../partials/header") %>
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-semibold text-slate-900">
+      <%= formTitle || "Proyecto" %>
+    </h1>
+    <a href="/admin/projects" class="text-xs text-blue-600 hover:text-blue-800">
+      ← Volver a proyectos
+    </a>
+  </div>
+
+  <form method="post" action="<%= formAction %>" class="space-y-4">
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="title">Título</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        required
+        value="<%= project ? project.title : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+    </div>
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="slug">Slug</label>
+      <input
+        id="slug"
+        name="slug"
+        type="text"
+        required
+        value="<%= project ? project.slug : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+      <p class="text-[11px] text-slate-400 mt-1">Identificador en URL, por ejemplo: <code>mi-proyecto</code>.</p>
+    </div>
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="description">Descripción</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      ><%= project ? project.description : '' %></textarea>
+    </div>
+
+    <div>
+      <label class="block text-xs font-medium text-slate-600 mb-1" for="tech_stack">Stack tecnológico</label>
+      <input
+        id="tech_stack"
+        name="tech_stack"
+        type="text"
+        value="<%= project ? project.tech_stack : '' %>"
+        class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+      />
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label class="block text-xs font-medium text-slate-600 mb-1" for="repo_url">Repositorio</label>
+        <input
+          id="repo_url"
+          name="repo_url"
+          type="url"
+          value="<%= project ? project.repo_url : '' %>"
+          class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+        />
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-slate-600 mb-1" for="live_url">Demo</label>
+        <input
+          id="live_url"
+          name="live_url"
+          type="url"
+          value="<%= project ? project.live_url : '' %>"
+          class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label class="inline-flex items-center gap-2 text-xs text-slate-600">
+        <input
+          type="checkbox"
+          name="is_featured"
+          value="true"
+          <%= project && project.is_featured ? "checked" : "" %>
+          class="rounded border-slate-300 text-blue-600 focus:ring-blue-200"
+        />
+        Marcar como destacado en la home
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      class="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+    >
+      Guardar proyecto
+    </button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>

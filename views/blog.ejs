@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<main class="max-w-6xl mx-auto px-4 py-12">
+  <header class="mb-6">
+    <p class="text-xs uppercase tracking-[0.25em] text-slate-400 mb-2">Artículos</p>
+    <h1 class="text-3xl font-semibold text-slate-900">Blog técnico</h1>
+  </header>
+
+  <% if (!posts || posts.length === 0) { %>
+    <p class="text-sm text-slate-500">No hay posts publicados todavía.</p>
+  <% } else { %>
+    <div class="space-y-4">
+      <% posts.forEach((post) => { %>
+        <article class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition">
+          <h2 class="text-base font-semibold text-slate-900 mb-1"><%= post.title %></h2>
+          <p class="text-xs text-slate-600 mb-2">
+            <%= post.excerpt || (post.content || "").slice(0, 200) %>
+            <%= (post.content || "").length > 200 ? "..." : "" %>
+          </p>
+          <p class="text-[11px] text-slate-400">
+            Publicado:
+            <%= post.published_at ? new Date(post.published_at).toLocaleDateString("es-ES") : "Sin fecha" %>
+          </p>
+        </article>
+      <% }); %>
+    </div>
+  <% } %>
+</main>
+
+<%- include("partials/footer") %>

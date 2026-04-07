@@ -1,0 +1,107 @@
+<%- include("partials/header") %>
+
+<main class="max-w-6xl mx-auto px-4">
+  <!-- Hero principal -->
+  <section class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center py-16 lg:py-24">
+    <!-- Texto a la izquierda -->
+    <div class="lg:col-span-6">
+      <p class="text-xs tracking-[0.25em] uppercase text-slate-400 mb-4">
+        Portfolio · Desarrollo web
+      </p>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">
+        <span class="block text-slate-900">Diseñemos tu</span>
+        <span class="block text-blue-600">próximo proyecto</span>
+      </h1>
+
+      <p class="mt-6 text-slate-500 max-w-xl text-sm sm:text-base">
+        Construyo aplicaciones web modernas con Node.js, Express y PostgreSQL,
+        apoyándome en IA para ir más rápido, sin perder el control del código.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/projects"
+          class="inline-flex items-center px-5 py-2.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+        >
+          Ver proyectos
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center px-5 py-2.5 rounded-full border border-blue-200 text-blue-600 text-sm font-medium bg-white hover:bg-blue-50 transition"
+        >
+          Hablemos
+        </a>
+      </div>
+    </div>
+
+    <!-- “Arte” / bloque visual a la derecha -->
+    <div class="lg:col-span-6">
+      <div class="relative w-full max-w-md mx-auto aspect-square">
+        <!-- Bloque azul -->
+        <div class="absolute bottom-0 left-6 right-0 h-32 bg-blue-600 rounded-3xl"></div>
+
+        <!-- Círculo grande -->
+        <div class="absolute inset-8 bg-slate-50 border border-blue-200 rounded-full"></div>
+
+        <!-- Rectángulo verde claro -->
+        <div class="absolute -right-6 top-10 w-40 h-6 bg-emerald-200 rotate-25"></div>
+
+        <!-- “Tarjeta” flotante -->
+        <div class="absolute right-6 bottom-10 bg-white border border-pink-200 shadow-sm px-4 py-2 rounded-xl">
+          <span class="text-[11px] font-medium text-pink-500">Co‑creando futuros</span>
+        </div>
+
+        <!-- Imagen placeholder cielo -->
+        <div class="absolute left-0 top-12 w-40 h-40 bg-gradient-to-b from-sky-200 to-sky-400 rounded-xl overflow-hidden">
+          <!-- Podés reemplazar esto por una <img> si querés -->
+          <div class="w-full h-full bg-[radial-gradient(circle_at_top,_#e0f2fe,_#38bdf8)]"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección proyectos destacados debajo (puedes dejarla simple por ahora) -->
+  <section class="py-8 lg:py-10 border-t border-slate-100">
+    <div class="flex items-baseline justify-between mb-4">
+      <h2 class="text-sm font-semibold tracking-wide text-slate-700 uppercase">
+        Proyectos destacados
+      </h2>
+      <a href="/projects" class="text-xs text-blue-600 hover:text-blue-800">
+        Ver todos
+      </a>
+    </div>
+
+    <% if (!projects || projects.length === 0) { %>
+      <p class="text-sm text-slate-500">Todavía no hay proyectos destacados.</p>
+    <% } else { %>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <% projects.forEach((project) => { %>
+          <article class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition">
+            <h3 class="text-sm font-semibold text-slate-900 mb-1"><%= project.title %></h3>
+            <p class="text-xs text-slate-500 mb-2">
+              <%= (project.description || "").slice(0, 120) %><%= (project.description || "").length > 120 ? "..." : "" %>
+            </p>
+            <p class="text-[11px] text-slate-400 mb-3">
+              Stack: <%= project.tech_stack || "No especificado" %>
+            </p>
+            <div class="flex flex-wrap gap-3 text-[11px]">
+              <% if (project.repo_url) { %>
+                <a href="<%= project.repo_url %>" target="_blank" rel="noreferrer" class="text-blue-600 hover:text-blue-800">
+                  Repositorio
+                </a>
+              <% } %>
+              <% if (project.live_url) { %>
+                <a href="<%= project.live_url %>" target="_blank" rel="noreferrer" class="text-blue-600 hover:text-blue-800">
+                  Demo
+                </a>
+              <% } %>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+    <% } %>
+  </section>
+</main>
+
+<%- include("partials/footer") %>

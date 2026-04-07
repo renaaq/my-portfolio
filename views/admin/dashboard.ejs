@@ -1,0 +1,58 @@
+<%- include("../partials/header") %>
+
+<main class="max-w-6xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <p class="text-xs uppercase tracking-[0.25em] text-slate-400 mb-1">
+        Admin
+      </p>
+      <h1 class="text-2xl font-semibold text-slate-900">Panel de administración</h1>
+    </div>
+    <form method="post" action="/admin/logout">
+      <button
+        type="submit"
+        class="inline-flex items-center px-3 py-1.5 rounded-full border border-slate-200 text-xs text-slate-600 hover:bg-slate-50"
+      >
+        Cerrar sesión
+      </button>
+    </form>
+  </div>
+
+  <section class="grid gap-4 md:grid-cols-3 mb-8">
+    <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+      <p class="text-xs text-slate-500 mb-1">Proyectos</p>
+      <p class="text-2xl font-semibold text-slate-900"><%= totals.projects %></p>
+    </div>
+    <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+      <p class="text-xs text-slate-500 mb-1">Posts publicados</p>
+      <p class="text-2xl font-semibold text-slate-900"><%= totals.posts %></p>
+    </div>
+    <div class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+      <p class="text-xs text-slate-500 mb-1">Mensajes recibidos</p>
+      <p class="text-2xl font-semibold text-slate-900"><%= totals.messages %></p>
+    </div>
+  </section>
+
+  <section class="grid gap-4 md:grid-cols-3">
+    <a href="/admin/projects" class="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+      <h2 class="text-sm font-semibold text-slate-900 mb-1">Gestionar proyectos</h2>
+      <p class="text-xs text-slate-500">
+        Crea, edita y organiza los proyectos que se muestran en tu portfolio.
+      </p>
+    </a>
+    <a href="/admin/posts" class="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+      <h2 class="text-sm font-semibold text-slate-900 mb-1">Gestionar posts</h2>
+      <p class="text-xs text-slate-500">
+        Publica y actualiza artículos técnicos para tu blog.
+      </p>
+    </a>
+    <a href="/admin/messages" class="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+      <h2 class="text-sm font-semibold text-slate-900 mb-1">Ver mensajes</h2>
+      <p class="text-xs text-slate-500">
+        Revisa los contactos que llegan desde el formulario.
+      </p>
+    </a>
+  </section>
+</main>
+
+<%- include("../partials/footer") %>
