@@ -62,7 +62,7 @@ function renderNewProject(req, res) {
   return renderProjectForm(res, {
     title: "Admin - Nuevo proyecto",
     formTitle: "Nuevo proyecto",
-    action: "/admin/projects",
+    formAction: "/admin/projects",
     project: {
       title: "",
       slug: "",
@@ -85,7 +85,7 @@ async function createAdminProject(req, res) {
       return renderProjectForm(res, {
         title: "Admin - Nuevo proyecto",
         formTitle: "Nuevo proyecto",
-        action: "/admin/projects",
+        formAction: "/admin/projects",
         project: payload,
         errorMessage: "Completa title, slug y description."
       });
@@ -110,7 +110,7 @@ async function renderEditProject(req, res) {
     return renderProjectForm(res, {
       title: "Admin - Editar proyecto",
       formTitle: "Editar proyecto",
-      action: `/admin/projects/${project.id}?_method=PUT`,
+      formAction: `/admin/projects/${project.id}?_method=PUT`,
       project,
       errorMessage: null
     });
@@ -129,7 +129,7 @@ async function updateAdminProject(req, res) {
       return renderProjectForm(res, {
         title: "Admin - Editar proyecto",
         formTitle: "Editar proyecto",
-        action: `/admin/projects/${projectId}?_method=PUT`,
+        formAction: `/admin/projects/${projectId}?_method=PUT`,
         project: { ...payload, id: projectId },
         errorMessage: "Completa title, slug y description."
       });
@@ -206,7 +206,7 @@ function renderNewPost(req, res) {
   return renderPostForm(res, {
     title: "Admin - Nuevo post",
     formTitle: "Nuevo post",
-    action: "/admin/posts",
+    formAction: "/admin/posts",
     post: {
       title: "",
       slug: "",
@@ -227,7 +227,7 @@ async function createAdminPost(req, res) {
       return renderPostForm(res, {
         title: "Admin - Nuevo post",
         formTitle: "Nuevo post",
-        action: "/admin/posts",
+        formAction: "/admin/posts",
         post: payload,
         errorMessage: "Completa title, slug y content."
       });
@@ -252,7 +252,7 @@ async function renderEditPost(req, res) {
     return renderPostForm(res, {
       title: "Admin - Editar post",
       formTitle: "Editar post",
-      action: `/admin/posts/${post.id}?_method=PUT`,
+      formAction: `/admin/posts/${post.id}?_method=PUT`,
       post,
       errorMessage: null
     });
@@ -275,7 +275,7 @@ async function updateAdminPost(req, res) {
       return renderPostForm(res, {
         title: "Admin - Editar post",
         formTitle: "Editar post",
-        action: `/admin/posts/${postId}?_method=PUT`,
+        formAction: `/admin/posts/${postId}?_method=PUT`,
         post: { ...payload, id: postId },
         errorMessage: "Completa title, slug y content."
       });
