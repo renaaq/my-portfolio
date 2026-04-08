@@ -21,7 +21,7 @@ async function login(req, res) {
     if (!user) {
       return res.status(401).render("admin/login", {
         title: "Login admin",
-        error: "Credenciales invalidas"
+        errorMessage: "Credenciales invalidas"
       });
     }
 
@@ -30,7 +30,7 @@ async function login(req, res) {
     if (!isValidPassword) {
       return res.status(401).render("admin/login", {
         title: "Login admin",
-        error: "Credenciales invalidas"
+        errorMessage: "Credenciales invalidas"
       });
     }
 
